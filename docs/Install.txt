@@ -1,0 +1,13 @@
+1° - Edite o arquivo .htaccess do diretório root, nele contém uma especificação de onde o projeto se encontra, se seu projeto estiver dentro de uma pasta, então altere o nome, se estiver dentro do root, remova o nome do diretório.
+ATENÇÃO: Editar apenas o 'test-dev/' e não 'test-dev/public/'. O public deve continuar
+RewriteRule ^((?!public/).*)$ test-dev/public/$1 [L,NC]
+
+2° - Edite o arquivo /public/api/index.php
+Mude apenas as linhas 16 e 17, não alterar mais nada no código:
+16 - $unsetCount = 3; //Remove /test-dev/, /public/ and /api/;
+17 - define("BASE", "/test-dev/");
+
+Na linha 16 removemos algumas partes da URI, para que o code pegue apenas /carros/param. Se você estiver dentro de uma pasta a partir do root, não é necessário alterar, se estiver no root, decremente um valor, ex: 4 => 3
+Na linha 17 você deve especificar qual o diretório base, se estiver rodando no root, então deixe apenas '/', caso contrário, mude para o seu path.
+
+São apenas essas as configurações necessárias.
