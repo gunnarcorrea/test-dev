@@ -7,11 +7,16 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once("../../vendor/autoload.php");
 use App\Controller\CarroController;
-//EDIT LINE BELLOW
+
+//######### EDIT LINE BELLOW #########
+//######### EDIT LINE BELLOW #########
+//######### EDIT LINE BELLOW #########
+//######### EDIT LINE BELLOW #########
+
 $unsetCount = 3; //Remove /test-dev/, /public/ and /api/;
 define("BASE", "/test-dev/");
 
-//NOT EDIT THE CODE BELLOW
+//######### NOT EDIT THE CODE BELLOW #########
 
 $method = $_SERVER['REQUEST_METHOD']; //POST, PUT, GET or DELETE
 $data = null; //Default is null
@@ -34,14 +39,6 @@ $controller = $ex[0];
 
 if(isset($ex[1]))
 $param = $ex[1];
-
-/*
-/carros - [GET] deve retornar todos os carros cadastrados.
-/carros - [POST] deve cadastrar um novo carro.
-/carros/{id}[GET] deve retornar o carro com ID especificado.
-/carros/{id}[PUT] deve atualizar os dados do carro com ID especificado.
-/carros/{id}[DELETE] deve apagar o carro com ID especificado.
-*/
 
 switch ($method) {
   case 'GET':
@@ -77,7 +74,7 @@ switch ($method) {
   break;
 
   default:
-  echo json_encode(['error' => 'invalid method type']);
+  echo json_encode(['result' => 'invalid method type']);
   break;
 }
 ?>

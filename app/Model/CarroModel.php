@@ -14,7 +14,7 @@ class CarroModel{
   }
 
   public function create(Carro $carro){
-    $carro->setId(count($this->carros) + 1);
+    $carro->setId($this->getLastId());
     $this->carros[] = $carro;
     $this->save();
 
@@ -68,6 +68,17 @@ class CarroModel{
   /*
   Read txt file and convert content to array
   */
+
+  private function getLastId(){
+    $last = 0;
+
+    for($i = 0; $i < count($this->carros); $i++){
+      if($this->carros[$i]->getId() > $last)
+       $last = $this->carros[$i]->getId();
+    }
+    return $last + 1;
+  }
+
   private function createArray(){
     if(!file_exists($this->pathFile) || filesize($this->pathFile) <= 0)
     return [];
