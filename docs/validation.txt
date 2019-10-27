@@ -1,0 +1,4 @@
+marca  : [min:2|max:100];
+modelo : [min:2|max:100];
+ano    : [min:1980|max:2020];
+id     : [min:1|max:inf];
